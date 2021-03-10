@@ -1,0 +1,21 @@
+<launch>
+  <!-- Gazebo world -->
+  <include file="$(find jackal_slam)/launch/include/jackal_world.launch" />
+
+  <!-- Run slam_toolbox_sync -->
+  <include file="$(find jackal_slam)/launch/include/slam_toolbox_sync.launch" />
+  
+  <!-- Run Move Base -->
+  <include file="$(find jackal_slam)/launch/include/move_base.launch" />
+  
+  <!--- Run Pointcloud Filter -->
+  <include file="$(find jackal_slam)/launch/include/pointcloud_filter.launch" />
+
+  <!--- Run Pointcloud to Laserscan -->
+  <include file="$(find jackal_slam)/launch/include/pointcloud2laserscan.launch" />
+
+  <!-- Run Rviz -->
+  <param name="use_gui" value="true"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find jackal_slam)/rviz/jackal_sim.rviz" />
+
+</launch>

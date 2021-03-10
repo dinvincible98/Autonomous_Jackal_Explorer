@@ -1,0 +1,59 @@
+build jackal on noetic:
+
+username: jackal
+pwd: MSR2020
+
+1.download Ubuntu 20.04 LTES ios in new usb
+2.inset in jackal 
+3.reboot warning ctrl+alt+del -> interface
+4.restart jackal
+
+
+
+
+start jackal: press red button on the stripe after pressing start button
+
+wifi router: already setup?
+
+can ping but cant ssh
+
+velodyne interface file?
+
+
+
+
+
+
+
+
+Build source code:
+
+hdl people tracking: CV_HSV2BGR -> cv::COLOR_HSV2BGR
+
+pcl require c++14 or above: Cmakelist.txt -std=c++17
+
+ 
+ 
+sudo apt-get install:
+
+hdl_globalization pkg
+
+nmea
+
+
+
+
+
+
+
+run slam_toolbox
+
+on jackal: 
+* source setup_jackal.bash every time
+roslaunch jackal_noetic_bringup slam_toolbox_jackal.launch
+roslaunch jackal_noetic_bringup velodyne.launch 
+
+on pc:
+* source setup_pc.bash every time
+roslaunch jackal_slam slam_toolbox_pc.launch
+

@@ -1,0 +1,3 @@
+<launch>
+    <node name="jackal_explore_node" pkg="jackal_slam" type="jackal_explore_node" output="screen" />
+</launch>

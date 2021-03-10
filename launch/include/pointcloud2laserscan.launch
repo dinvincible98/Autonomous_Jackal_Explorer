@@ -1,0 +1,24 @@
+<launch>
+    <node pkg="tf" type="static_transform_publisher" name="velodyne_to_front_laser" args="0 0 0 0 0 0 /velodyne /front_laser 100" />
+
+    <!-- Transfer 3D pointcloud data to 2D laserscan data -->
+    <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan">
+        <remap from="cloud_in" to="/velodyne_points/voxeled"/>
+        <remap from="scan" to="/front/scan"/>
+        <rosparam>
+            transform_tolerance: 0.01
+            min_height: 0.0
+            max_height: 1.0
+
+            angle_min: -3.1416
+            angle_max: 3.1416
+            <!-- 0.0086 is the correct number-->
+            angle_increment: 0.0086                                             
+            scan_time: 0.1
+            range_min: 0.1
+            range_max: 20.0
+            use_inf: true
+            concurrency_level: 0
+        </rosparam>
+    </node>
+</launch>

@@ -1,0 +1,171 @@
+#! /usr/bin/env python3
+'''
+    This is an instance segmentation code using Intel Realsense camera, OpenCV and Yolov4-tiny
+'''
+import cv2 as cv
+import numpy as np
+import pyrealsense2 as rs
+import time
+import rospy
+from cv_bridge import CvBridge
+from sensor_msgs.msg import Image
+
+
+class Segementation:
+    
+    def __init__(self):
+        ''' initialize environment'''
+        self. image_pub = rospy.Publisher("image", Image, queue_size=10)
+        rospy.logdebug("Initialized image publisher")
+
+        ''' Converison between ROS and OpenCV '''
+        self.bridge = CvBridge()
+        self.img = None
+
+
+    def image_processing(self):
+
+        # Load Yolo
+        net = cv.dnn.readNet("/home/dinvincible98/ws1/src/jackal_slam/config/yolov4-tiny.weights",\
+                             "/home/dinvincible98/ws1/src/jackal_slam/config/yolov4-tiny.cfg")
+
+        classes = []
+
+        with open("/home/dinvincible98/ws1/src/jackal_slam/config/coco.names", "r") as f:
+            classes = [line.strip() for line in f.readlines()]
+        print(classes)
+
+        layer_names = net.getLayerNames()
+        outputlayers = [layer_names[i[0]-1] for i in net.getUnconnectedOutLayers()]
+
+        colors = np.random.uniform(0,255,size=(len(classes),3))
+
+        # Loading images
+        pipeline = rs.pipeline()
+        config = rs.config()
+        config.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
+        config.enable_stream(rs.stream.depth, 1280, 720, rs.format.z16, 30)
+        print("[INFO] Starting streaming...")
+        profile = pipeline.start(config)
+        print("[INFO] Camera ready.")
+
+        starting_time = time.time()
+        frame_id = 0
+        try:
+            while True:
+                # get frames
+                frames = pipeline.wait_for_frames()
+                color_frame = frames.get_color_frame()
+                depth_frame = frames.get_depth_frame()
+
+                frame_id+=1
+
+                # color image
+                frame_id+=1
+
+                self.image = np.asanyarray(color_frame.get_data())
+
+                # depth map
+                colorizer = rs.colorizer()
+                colorized_depth = np.asanyarray(colorizer.colorize(depth_frame).get_data())
+
+                # align frames
+                align = rs.align(rs.stream.color)
+                frameset = align.process(frames)
+
+                # update color and depth frame
+                aligned_depth_frame = frameset.get_depth_frame()
+                colorized_depth = np.asanyarray(colorizer.colorize(aligned_depth_frame).get_data())     
+                
+                # height & width
+                height,width = self.image.shape[:2]
+                expected = 640          # width 640 x 480
+
+                # detecing object
+                blob = cv.dnn.blobFromImage(self.image,0.00392,(320,320),(0,0,0),True,crop=False)
+
+                net.setInput(blob)
+                outs = net.forward(outputlayers)
+
+                class_ids = []
+                confidences = []
+                boxes = []
+
+                for out in outs:
+                    for detection in out:
+                        scores = detection[5:]
+                        class_id = np.argmax(scores)
+                        confidence = scores[class_id]
+                        if confidence>0.25:
+
+                            center_x = int(detection[0]*width)
+                            center_y = int(detection[1]*height)
+                            w = int(detection[2]*width)
+                            h = int(detection[3]*height)
+
+                            x = int(center_x - w/2)
+                            y = int(center_y - h/2)
+
+                            boxes.append([x,y,w,h])
+                            confidences.append(float(confidence))
+                            class_ids.append(class_id)
+                
+                indexes = cv.dnn.NMSBoxes(boxes,confidences,0.4,0.6)
+
+                for i in range(len(boxes)):
+                    if i in indexes:
+                        x,y,w,h = boxes[i]
+                        label = str(classes[class_ids[i]])
+                        confidence = confidences[i]
+                        color = colors[class_ids[i]]
+                        # label object
+                        cv.rectangle(self.image,(x,y),(x+w,y+h),color,2)
+                        cv.putText(self.image,label+" "+str(round(confidence,2)), (x,y+30),cv.FONT_HERSHEY_COMPLEX,0.8,(0,0,255),2)
+
+                        # depth info
+                        scale = height/expected
+                        xmin_depth = int(x*scale)
+                        ymin_depth = int(y*scale)
+                        xmax_depth = int((x+w)*scale)
+                        ymax_depth = int((y+h)*scale)
+                        depth = np.asanyarray(aligned_depth_frame.get_data())
+                        depth = depth[xmin_depth:xmax_depth,ymin_depth:ymax_depth].astype(float)
+
+                        # get data scale from the device
+                        depth_scale = profile.get_device().first_depth_sensor().get_depth_scale()
+                        depth = depth * depth_scale
+                        dist,_,_,_ = cv.mean(depth)
+                        cv.putText(self.image,"Distance:" + str(round(dist,2))+"m",(x,y+80),cv.FONT_HERSHEY_COMPLEX,0.7,(0,255,0),2)                       
+
+                elapsed_time = time.time() - starting_time
+                fps = frame_id/elapsed_time
+                cv.putText(self.image,"FPS:" + str(round(fps,2)),(10,50),cv.FONT_HERSHEY_COMPLEX,1,(0,0,0),1)
+
+                '''publish msg'''
+                image_out = self.bridge.cv2_to_imgmsg(self.image,"bgr8")
+                self.image_pub.publish(image_out)
+                
+                key = cv.waitKey(1)
+
+                if key & 0xFF == ord('q') or key == 27:
+                    break
+                    cv.destroyAllWindows()
+
+        finally:
+            pipeline.stop()
+
+
+def main():
+    ''' The main function'''
+    rospy.init_node("Instance Segmentation",log_level=rospy.DEBUG)
+    rospy.logdebug("Node started")
+    segmentation = Segementation()
+    segmentation.image_processing()
+    rospy.sleep(1)
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except rospy.ROSInterruptException:
+        pass

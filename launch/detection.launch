@@ -1,0 +1,5 @@
+<launch>
+    <node name="detection" pkg="jackal_slam" type="detection" />
+    <node name="rviz" pkg="rviz" type="rviz" />
+
+</launch>

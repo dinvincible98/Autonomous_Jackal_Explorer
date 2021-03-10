@@ -1,0 +1,8 @@
+<launch>
+  
+  <!-- Run Rviz -->
+  <param name="use_gui" value="true"/>
+  <arg name="config" default="robot" />
+  <node name="rviz" pkg="rviz" type="rviz"  args="-d $(find jackal_slam)/rviz/real_jackal.rviz" />
+
+</launch>
