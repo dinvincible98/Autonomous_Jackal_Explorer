@@ -4,7 +4,7 @@
 '''
 import cv2 as cv
 import numpy as np
-import pyrealsense2 as rs
+import pyrealsense2.pyrealsense2 as rs
 import time
 import rospy
 from cv_bridge import CvBridge
@@ -15,7 +15,7 @@ class Segementation:
     
     def __init__(self):
         ''' initialize environment'''
-        self. image_pub = rospy.Publisher("image", Image, queue_size=10)
+        self. image_pub = rospy.Publisher("/image", Image, queue_size=10)
         rospy.logdebug("Initialized image publisher")
 
         ''' Converison between ROS and OpenCV '''
@@ -44,7 +44,7 @@ class Segementation:
         pipeline = rs.pipeline()
         config = rs.config()
         config.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
-        config.enable_stream(rs.stream.depth, 1280, 720, rs.format.z16, 30)
+        # config.enable_stream(rs.stream.depth, 640, 480, rs.format.z16, 30)
         print("[INFO] Starting streaming...")
         profile = pipeline.start(config)
         print("[INFO] Camera ready.")
@@ -56,30 +56,29 @@ class Segementation:
                 # get frames
                 frames = pipeline.wait_for_frames()
                 color_frame = frames.get_color_frame()
-                depth_frame = frames.get_depth_frame()
+                # depth_frame = frames.get_depth_frame()
 
                 frame_id+=1
 
                 # color image
-                frame_id+=1
 
                 self.image = np.asanyarray(color_frame.get_data())
 
-                # depth map
-                colorizer = rs.colorizer()
-                colorized_depth = np.asanyarray(colorizer.colorize(depth_frame).get_data())
+                # # depth map
+                # colorizer = rs.colorizer()
+                # colorized_depth = np.asanyarray(colorizer.colorize(depth_frame).get_data())
 
-                # align frames
-                align = rs.align(rs.stream.color)
-                frameset = align.process(frames)
+                # # align frames
+                # align = rs.align(rs.stream.color)
+                # frameset = align.process(frames)
 
-                # update color and depth frame
-                aligned_depth_frame = frameset.get_depth_frame()
-                colorized_depth = np.asanyarray(colorizer.colorize(aligned_depth_frame).get_data())     
+                # # update color and depth frame
+                # aligned_depth_frame = frameset.get_depth_frame()
+                # colorized_depth = np.asanyarray(colorizer.colorize(aligned_depth_frame).get_data())     
                 
                 # height & width
                 height,width = self.image.shape[:2]
-                expected = 640          # width 640 x 480
+                # expected = 640          # width 640 x 480
 
                 # detecing object
                 blob = cv.dnn.blobFromImage(self.image,0.00392,(320,320),(0,0,0),True,crop=False)
@@ -122,20 +121,21 @@ class Segementation:
                         cv.rectangle(self.image,(x,y),(x+w,y+h),color,2)
                         cv.putText(self.image,label+" "+str(round(confidence,2)), (x,y+30),cv.FONT_HERSHEY_COMPLEX,0.8,(0,0,255),2)
 
-                        # depth info
-                        scale = height/expected
-                        xmin_depth = int(x*scale)
-                        ymin_depth = int(y*scale)
-                        xmax_depth = int((x+w)*scale)
-                        ymax_depth = int((y+h)*scale)
-                        depth = np.asanyarray(aligned_depth_frame.get_data())
-                        depth = depth[xmin_depth:xmax_depth,ymin_depth:ymax_depth].astype(float)
+                        # distance estimation is not accurate
+                        # # depth info
+                        # scale = height/expected
+                        # xmin_depth = int(x*scale)
+                        # ymin_depth = int(y*scale)
+                        # xmax_depth = int((x+w)*scale)
+                        # ymax_depth = int((y+h)*scale)
+                        # depth = np.asanyarray(aligned_depth_frame.get_data())
+                        # depth = depth[xmin_depth:xmax_depth,ymin_depth:ymax_depth].astype(float)
 
-                        # get data scale from the device
-                        depth_scale = profile.get_device().first_depth_sensor().get_depth_scale()
-                        depth = depth * depth_scale
-                        dist,_,_,_ = cv.mean(depth)
-                        cv.putText(self.image,"Distance:" + str(round(dist,2))+"m",(x,y+80),cv.FONT_HERSHEY_COMPLEX,0.7,(0,255,0),2)                       
+                        # # get data scale from the device
+                        # depth_scale = profile.get_device().first_depth_sensor().get_depth_scale()
+                        # depth = depth * depth_scale
+                        # dist,_,_,_ = cv.mean(depth)
+                        # cv.putText(self.image,"Distance:" + str(round(dist,2))+"m",(x,y+80),cv.FONT_HERSHEY_COMPLEX,0.7,(0,255,0),2)                       
 
                 elapsed_time = time.time() - starting_time
                 fps = frame_id/elapsed_time
@@ -148,8 +148,8 @@ class Segementation:
                 key = cv.waitKey(1)
 
                 if key & 0xFF == ord('q') or key == 27:
-                    break
                     cv.destroyAllWindows()
+                    break
 
         finally:
             pipeline.stop()
