@@ -1,1 +1,2 @@
-# Jackal_SLAM
+# Autonomous Jackal Explorer
+
