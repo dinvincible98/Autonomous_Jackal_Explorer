@@ -28,8 +28,10 @@ Please refer to my detailed setup instruction [here](https://github.com/dinvinci
 #### Note:   After git clone this repo into ws/src, please change the folder name to jackal_slam, then build the package with catkin_make. 
 ### Structure of The Project
 #### Part 1: SLAM
-SLAM(Simultaneous Localization and Mapping) technology allows the robot to map an unknown environment while keeps tracking its own location. To run SLAM on real Jackal:
+SLAM(Simultaneous Localization and Mapping) technology allows the robot to map an unknown environment while keeps tracking its own location. I used slam toolbox package to accomplish the task. The basic layout is shown below:
 
+
+To run SLAM on real Jackal:
 On Jackal:
     
     1. source setup_jackal.bash 
@@ -42,13 +44,13 @@ On Remote PC:
     2. roslaunch jackal_slam slam_toolbox_pc.launch
 
 #### Part 2: Frontier Exploration
-Frontier exploration is a fast and advanced algorithm for robot to explore in an unknown environment and map the world. To implement this algorithm on Jackal, I used Costmap2D package and divided the task into three parts:
+Frontier exploration is a fast and advanced algorithm for robot to explore in an unknown environment and map the world. A detailed explanation can be found [here](https://www.cs.cmu.edu/~motionplanning/papers/sbp_papers/integrated1/yamauchi_frontiers.pdf). To implement this algorithm on Jackal, I used Costmap2D package and divided the task into three parts:
 
-costmap:
+costmap.cpp: A customized tool library for handling function from Costmap2D package. It provides information of the map and robot pose.
+ 
+frontier_search.cpp: A library contains my implementation of frontier exploration algorithm  
 
-frontier_search:
-
-navigation:
+navigation.cpp: The main exploration code used functions from costmap and frontier_search library. 
 
 
         
