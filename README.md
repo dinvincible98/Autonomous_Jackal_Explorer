@@ -79,12 +79,22 @@ On remote PC:
 
 #### Part3: People Tracking
 For people tracking feature, I used hdl_people tracking package which can detect walking pedestrains by extracting information from the pointcloud data. 
+
+To run the people tracking:
+        
+        1. source setup_laptop.bash
+        2. roslaunch jackal_slam hdl_people_tracking.launch
+
 ##### Demo
 
 
 #### Part4: Object Detection 
 
+To run the object detection:
         
+        1. source setup_laptop.bash
+        2. roslaunch jackal_slam detection.launch
+      
 ### Future Work
 
         
