@@ -71,6 +71,7 @@ To run the frontier exploration in simulation(Gazebo):
 
 ##### Demo
 ![sim](https://user-images.githubusercontent.com/70287453/111059533-f4453a00-845b-11eb-9a82-8ed0f2c2b920.gif)
+
 To run the frontier exploration on real Jackal(Make sure the SLAM node is running first):
 
 On remote PC:
@@ -78,6 +79,7 @@ On remote PC:
         1. source setup_laptop.bash
         2. roslaunch jackal_slam jackal_explore.launch
 ##### Demo
+![real](https://user-images.githubusercontent.com/70287453/111059806-e8f30e00-845d-11eb-8db0-c0366c25a32b.gif)
 
 #### Part 3: People Tracking
 For people tracking feature, I used hdl_people tracking package which can detect walking pedestrains by extracting information from the pointcloud data. 
@@ -88,7 +90,7 @@ To run the people tracking, open a new terminal on remote PC:
         2. roslaunch jackal_slam hdl_people_tracking.launch
 
 ##### Demo
-
+![people](https://user-images.githubusercontent.com/70287453/111059814-eee8ef00-845d-11eb-96fa-cdfd59554b52.gif)
 
 #### Part 4: Object Detection 
 This part of the project is also my final project for COMP_ENG 395: Connected and Autonomous Vehicles: Challenges and Design which I thorougly evaluated the performance of YOLOv3, YOLOv4 and YOLOv4-tiny and tested on the Jackal. Based on my test result, I found YOLOv4-tiny can reach approximately 30FPS in ROS whereas the other two models only have 3FPS. Even though YOLOv4-tiny has less accuracy compared with the other two models, it is still good enough to classify most objects. Besides, FPS is extreamly important in real-time detection for autonomous vehicle so I decided to use YOLOv4-tiny on Jackal. The full analysis paper can be found [here](https://github.com/dinvincible98/Autonomous_Jackal_Explorer/blob/master/final%20project.pdf). 
@@ -99,7 +101,8 @@ To run the object detection, open a new terminal on remote PC:
         2. roslaunch jackal_slam detection.launch
 
 ##### Demo
-      
+![detection](https://user-images.githubusercontent.com/70287453/111059811-eb556800-845d-11eb-906a-2048baa3e898.gif)
+
 ### Future Work
 * Add a boundary feature to the automapping so I can specify an area for the robot to explore instead of trying to map the whole environment(Not realistic if given a very large environment)
 * Lidar - Camera fusion so the detected objects can be shown in the map. 
