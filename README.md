@@ -108,8 +108,8 @@ To run the object detection, open a new terminal on remote PC:
 ![detection](https://user-images.githubusercontent.com/70287453/111059811-eb556800-845d-11eb-906a-2048baa3e898.gif)
 
 ### Future Work
-* Add a boundary feature to the automapping so I can specify an area for the robot to explore instead of trying to map the whole environment(Not realistic if given a very large environment)
-* Lidar - Camera fusion so the detected objects can be shown in the map. 
-* Meausre the distance between the camera and objects using the depth images from the realsense camera. 
+* Add a boundary feature to the automapping so I can specify an area for the robot to explore instead of trying to map the whole environment(Not realistic if given a very large environment).
+* Implement lidar - camera fusion so the detected objects can be shown in the map and use GPU for handling object detection task.
+* Estimate the distance between the camera and objects using the depth information from the realsense camera.
         
 
