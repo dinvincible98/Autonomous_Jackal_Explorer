@@ -23,5 +23,5 @@ The goal of the project is to build a mobile robot system equipped with percepti
 * OpenCV(4.5.1)
 * YOLOv4-tiny
 ### Setup Jackal from scratch
-Please refer to my detailed setup instruction here[https://github.com/dinvincible98/Jackal_ROS_Noetic_Bringup]. 
+Please refer to my detailed setup instruction [here](https://github.com/dinvincible98/Jackal_ROS_Noetic_Bringup). 
 
