@@ -56,8 +56,13 @@ frontier_search.cpp: A library contains my implementation of frontier exploratio
 navigation.cpp: The main exploration code used functions from costmap and frontier_search library. 
 
 
+To run the frontier exploration in simulation(Gazebo):
         
-To run the frontier exploration(Make sure the SLAM node is running first):
+        1. roslaunch jackal_slam jackal_test.launch
+        2. roslaunch jackal_slam jackal_explore.launch 
+
+To run the frontier exploration on real Jackal(Make sure the SLAM node is running first):
+
 On remote PC:
 
         1. source setup_laptop.bash
