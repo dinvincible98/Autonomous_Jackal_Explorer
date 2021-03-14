@@ -56,7 +56,7 @@ Frontier exploration is a fast and advanced algorithm for robot to explore in an
 
 3. navigation.cpp: The main exploration code used functions from costmap and frontier_search library. 
 
-##### ROS node flowchart
+##### ROS Node Flowchart
 
 ![Screenshot from 2021-03-13 22-24-06](https://user-images.githubusercontent.com/70287453/111057174-df13df80-844a-11eb-8548-9372ff116ee8.png)
 
@@ -90,7 +90,7 @@ To run the people tracking, open a new terminal on remote PC:
 
 
 #### Part4: Object Detection 
-This part of the project is also my final project for COMP_ENG 395: Connected and Autonomous Vehicles: Challenges and Design which I thorougly evaluated the performance of YOLOv3, YOLOv4 and YOLOv4-tiny and tested on the Jackal. The full paper can be found here. 
+This part of the project is also my final project for COMP_ENG 395: Connected and Autonomous Vehicles: Challenges and Design which I thorougly evaluated the performance of YOLOv3, YOLOv4 and YOLOv4-tiny and tested on the Jackal. Based on my test result, I found YOLOv4-tiny can reach approximately 30FPS in ROS whereas the other two models only have 3FPS. Even though YOLOv4-tiny has less accuracy compared with the other two models, it is still good enough to classify most objects. Besides, FPS is extreamly important in real-time detection for autonomous vehicle so I decided to use YOLOv4-tiny on Jackal. The full analysis paper can be found here. 
 
 To run the object detection, open a new terminal on remote PC:    
 
