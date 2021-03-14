@@ -20,7 +20,7 @@ The goal of the project is to build a mobile robot system equipped with percepti
 * pyrealsense2, NumPy, OpenCV(4.5.1)
 * C++, python3(3.8.1)
 ### Setup Jackal on ROS Noetic From Scratch
-Please refer to my detailed setup instruction [here](https://github.com/dinvincible98/Jackal_ROS_Noetic_Bringup) and carefully read each command line. To run this project, user need to clone both the bringup repo and this repo.
+Please refer to my detailed setup instruction [here](https://github.com/dinvincible98/Jackal_ROS_Noetic_Bringup) and carefully read each command line. To run this project, user need to clone both the bringup repo and this repo. In addition to all packages listed in the bringup repo, user need to install hdl_people_tracking, hdl_localization and hdl_global_localization packages into the jackal_ws. 
 
 #### Note: After git clone this repo into ws/src, please change the folder name to jackal_slam, then build the package with catkin_make. 
 
@@ -41,7 +41,9 @@ On Remote PC:
     1. source setup_laptop.bash
     2. roslaunch jackal_slam slam_toolbox_pc.launch
 
-Then, user can use nav goal in Rviz to publish goal point and map the environment. 
+Then, user can use nav goal in Rviz to publish goal point and map the environment.
+##### Demo
+
 #### Note: Remember to source the bash file every time when open a new terminal
 
 #### Part 2: Frontier Exploration
@@ -65,15 +67,20 @@ To run the frontier exploration in simulation(Gazebo):
         1. roslaunch jackal_slam jackal_test.launch
         2. roslaunch jackal_slam jackal_explore.launch 
 
+##### Demo
+
 To run the frontier exploration on real Jackal(Make sure the SLAM node is running first):
 
 On remote PC:
 
         1. source setup_laptop.bash
         2. roslaunch jackal_slam jackal_explore.launch
+##### Demo
 
 #### Part3: People Tracking
 For people tracking feature, I used hdl_people tracking package which can detect walking pedestrains by extracting information from the pointcloud data. 
+##### Demo
+
 
 #### Part4: Object Detection 
 
