@@ -30,6 +30,7 @@ SLAM(Simultaneous Localization and Mapping) technology allows the robot to map a
 
 
 To run SLAM on real Jackal:
+
 On Jackal:
     
     1. source setup_jackal.bash 
@@ -77,12 +78,10 @@ On remote PC:
         2. roslaunch jackal_slam jackal_explore.launch
 ##### Demo
 
-#### Part3: People Tracking
+#### Part 3: People Tracking
 For people tracking feature, I used hdl_people tracking package which can detect walking pedestrains by extracting information from the pointcloud data. 
 
-To run the people tracking, open a new terminal:
-
-On remote PC:
+To run the people tracking, open a new terminal on remote PC:
 
         1. source setup_laptop.bash
         2. roslaunch jackal_slam hdl_people_tracking.launch
@@ -91,13 +90,14 @@ On remote PC:
 
 
 #### Part4: Object Detection 
+This part of the project is also my final project for COMP_ENG 395: Connected and Autonomous Vehicles: Challenges and Design which I thorougly evaluated the performance of YOLOv3, YOLOv4 and YOLOv4-tiny and tested on the Jackal. The full paper can be found here. 
 
-To run the object detection, open a new terminal:
-
-On remote PC:    
+To run the object detection, open a new terminal on remote PC:    
 
         1. source setup_laptop.bash
         2. roslaunch jackal_slam detection.launch
+
+##### Demo
       
 ### Future Work
 
