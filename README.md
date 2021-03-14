@@ -25,7 +25,7 @@ The goal of the project is to build a mobile robot system equipped with percepti
 ### Setup Jackal on ROS Noetic From Scratch
 Please refer to my detailed setup instruction [here](https://github.com/dinvincible98/Jackal_ROS_Noetic_Bringup) and carefully read each command line. To run this project, user need to clone both the bringup repo and this repo.
 
-#### Note:   After git clone this repo into ws/src, please change the folder name to jackal_slam, then build the package with catkin_make. 
+#### Note: After git clone this repo into ws/src, please change the folder name to jackal_slam, then build the package with catkin_make. 
 ### Structure of The Project
 #### Part 1: SLAM
 SLAM(Simultaneous Localization and Mapping) technology allows the robot to map an unknown environment while keeps tracking its own location. I used slam toolbox package to accomplish the task. The basic layout is shown below:
@@ -43,6 +43,9 @@ On Remote PC:
     1. source setup_laptop.bash
     2. roslaunch jackal_slam slam_toolbox_pc.launch
 
+Then, user can use nav goal in Rviz to publish goal point and map the environment. 
+#### Note: Remember to source the bash file every time when open a new terminal
+
 #### Part 2: Frontier Exploration
 Frontier exploration is a fast and advanced algorithm for robot to explore in an unknown environment and map the world. A detailed explanation can be found [here](https://www.cs.cmu.edu/~motionplanning/papers/sbp_papers/integrated1/yamauchi_frontiers.pdf). To implement this algorithm on Jackal, I used Costmap2D package and divided the task into three parts:
 
@@ -54,5 +57,13 @@ navigation.cpp: The main exploration code used functions from costmap and fronti
 
 
         
+To run the frontier exploration(Make sure the SLAM node is running first):
+On remote PC:
 
+        1. source setup_laptop.bash
+        2. roslaunch jackal_slam jackal_explore.launch
+
+        
+
+        
 
