@@ -24,6 +24,8 @@ The goal of the project is to build a mobile robot system equipped with percepti
 * YOLOv4-tiny
 ### Setup Jackal on ROS Noetic From Scratch
 Please refer to my detailed setup instruction [here](https://github.com/dinvincible98/Jackal_ROS_Noetic_Bringup) and carefully read each commandline. To run this project, user need to clone both the bringup repo and this repo.
+
+#### Note:   After git clone this repo into ws/src, please change the folder name to jackal_slam, then build the package with catkin_make. 
 ### Structure of The Project
 #### Part 1: SLAM
 SLAM(Simultaneous Localization and Mapping) technology allows the robot to map an unknown environment while keeps tracking its own location. To run SLAM on real Jackal:
