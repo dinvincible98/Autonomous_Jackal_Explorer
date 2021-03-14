@@ -20,7 +20,7 @@ The goal of the project is to build a mobile robot system equipped with percepti
 * pyrealsense2, NumPy, OpenCV(4.5.1),cv_bridge
 * C++, python3(3.8.1)
 ### Setup Jackal on ROS Noetic From Scratch
-Please refer to my detailed setup instruction [here](https://github.com/dinvincible98/Jackal_ROS_Noetic_Bringup) and carefully read each command line. To run this project, user need to clone both the bringup repo and this repo. In addition to all packages listed in the bringup repo, user need to install [hdl_people_tracking](https://github.com/koide3/hdl_people_tracking), hdl_localization and hdl_global_localization packages into the jackal_ws. 
+Please refer to my detailed setup instruction [here](https://github.com/dinvincible98/Jackal_ROS_Noetic_Bringup) and carefully read each command line. To run this project, user need to clone both the bringup repo and this repo. In addition to all packages listed in the bringup repo, user need to install [hdl_people_tracking](https://github.com/koide3/hdl_people_tracking) and its dependent packages into the jackal_ws. 
 
 #### Note: After git clone this repo into your own workspace, please change the folder name to jackal_slam, then build the package with catkin_make. 
 
