@@ -28,6 +28,8 @@ Please refer to my detailed setup instruction [here](https://github.com/dinvinci
 #### Part 1: SLAM
 SLAM(Simultaneous Localization and Mapping) technology allows the robot to map an unknown environment while keeps tracking its own location. I used slam toolbox package to accomplish the task. The basic layout is shown below:
 
+![slam](https://user-images.githubusercontent.com/70287453/111082277-67d75d80-84d5-11eb-9138-d69e5b4e340e.png)
+
 
 To run SLAM on real Jackal:
 
