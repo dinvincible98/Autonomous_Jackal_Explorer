@@ -1,7 +1,5 @@
 # Autonomous Jackal Explorer
 ### This is an individual winter quarter project at Northwestern University
-![IMG-0430](https://user-images.githubusercontent.com/70287453/111059525-ed1e2c00-845b-11eb-94d7-c0bb2849d0e7.jpg width="200" height="400")
-
 ### Project Goal
 
 The goal of the project is to build a mobile robot system equipped with perception, localization, mapping and navigation abilities in both simulation and real world. The robot is capable of exploring an unknown environment autonomously and mapping the world. It can also detect pedestrians and classify different objects with lidar and camera. Based on the changing the environment, the robot should give responses accordingly.
