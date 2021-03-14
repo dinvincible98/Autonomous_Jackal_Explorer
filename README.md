@@ -66,6 +66,12 @@ On remote PC:
         1. source setup_laptop.bash
         2. roslaunch jackal_slam jackal_explore.launch
 
+#### Part3: People Tracking
+
+
+
+
+#### Part4: Object Detection 
         
 
         
