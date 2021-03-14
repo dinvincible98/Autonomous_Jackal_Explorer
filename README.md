@@ -22,6 +22,13 @@ The goal of the project is to build a mobile robot system equipped with percepti
 * NumPy
 * OpenCV(4.5.1)
 * YOLOv4-tiny
-### Setup Jackal from scratch
-Please refer to my detailed setup instruction [here](https://github.com/dinvincible98/Jackal_ROS_Noetic_Bringup). 
+### Setup Jackal on ROS Noetic From Scratch
+Please refer to my detailed setup instruction [here](https://github.com/dinvincible98/Jackal_ROS_Noetic_Bringup). To run this project, user need to clone both the bringup repo and this repo.
+### Structure of The Project
+#### Part 1: SLAM
+SLAM(Simultaneous Localization and Mapping) technology allows the robot to map an unknown environment while keeps tracking its own location. To run SLAM on real Jackal:
+
+    1. source setup
+
+
 
