@@ -8,12 +8,13 @@ The goal of the project is to build a mobile robot system equipped with percepti
 
 
 
-### Setup Requirements
+### Dependencies
 #### Hardware:
 * Clearpath Jackal Robot
 * Velodyne-16 lidar
 * Intel Realsense Camera D435i
-#### Software(Packages and Libraries): 
+#### Software:
+* ROS Noetic
 * Slam Toolbox
 * Costmap2D
 * hdl people tracking
@@ -21,4 +22,6 @@ The goal of the project is to build a mobile robot system equipped with percepti
 * NumPy
 * OpenCV(4.5.1)
 * YOLOv4-tiny
+### Setup Jackal from scratch
+Please refer to my detailed setup instruction here[https://github.com/dinvincible98/Jackal_ROS_Noetic_Bringup]. 
 
