@@ -14,14 +14,10 @@ The goal of the project is to build a mobile robot system equipped with percepti
 * Velodyne-16 lidar
 * Intel Realsense Camera D435i
 #### Software:
-* ROS Noetic
-* Slam Toolbox
-* Costmap2D
-* hdl people tracking
-* pyrealsense2
-* NumPy
-* OpenCV(4.5.1)
-* YOLOv4-tiny
+* ROS Noetic, Rviz, Gazebo
+* Slam Toolbox, Costmap2D
+* hdl people tracking, YOLOv4-tiny
+* pyrealsense2, NumPy, OpenCV(4.5.1)
 ### Setup Jackal on ROS Noetic From Scratch
 Please refer to my detailed setup instruction [here](https://github.com/dinvincible98/Jackal_ROS_Noetic_Bringup) and carefully read each command line. To run this project, user need to clone both the bringup repo and this repo.
 
