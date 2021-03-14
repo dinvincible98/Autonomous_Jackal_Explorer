@@ -18,6 +18,7 @@ The goal of the project is to build a mobile robot system equipped with percepti
 * Slam Toolbox, Costmap2D
 * hdl people tracking, YOLOv4-tiny
 * pyrealsense2, NumPy, OpenCV(4.5.1)
+* C++, python3(3.8.1)
 ### Setup Jackal on ROS Noetic From Scratch
 Please refer to my detailed setup instruction [here](https://github.com/dinvincible98/Jackal_ROS_Noetic_Bringup) and carefully read each command line. To run this project, user need to clone both the bringup repo and this repo.
 
