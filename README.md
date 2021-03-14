@@ -1,6 +1,6 @@
 # Autonomous Jackal Explorer
 ### This is an individual winter quarter project at Northwestern University
-![IMG-0430](https://user-images.githubusercontent.com/70287453/111059525-ed1e2c00-845b-11eb-94d7-c0bb2849d0e7.jpg width="200")
+![IMG-0430](https://user-images.githubusercontent.com/70287453/111059525-ed1e2c00-845b-11eb-94d7-c0bb2849d0e7.jpg width="200" height="400" /)
 
 ### Project Goal
 
