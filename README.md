@@ -43,13 +43,15 @@ Then, user can use nav goal in Rviz to publish goal point and map the environmen
 #### Note: Remember to source the bash file every time when open a new terminal
 
 #### Part 2: Frontier Exploration
-Frontier exploration is a fast and advanced algorithm for robot to explore in an unknown environment and map the world. A detailed explanation can be found [here](https://www.cs.cmu.edu/~motionplanning/papers/sbp_papers/integrated1/yamauchi_frontiers.pdf). To implement this algorithm on Jackal, I used Costmap2D package and divided the task into three parts:
+Frontier exploration is a fast and advanced algorithm for robot to explore in an unknown environment and map the world. A detailed explanation can be found [here](https://www.cs.cmu.edu/~motionplanning/papers/sbp_papers/integrated1/yamauchi_frontiers.pdf). To implement this algorithm on Jackal, I used Costmap2D package and divided the task into three sections:
 
-costmap.cpp: A customized tool library for handling function from Costmap2D package. It provides information of the map and robot pose.
+1. costmap.cpp: A customized tool library for handling function from Costmap2D package. It provides information of the map and robot pose.
  
-frontier_search.cpp: A library contains my implementation of frontier exploration algorithm  
+2. frontier_search.cpp: A library contains my implementation of frontier exploration algorithm  
 
-navigation.cpp: The main exploration code used functions from costmap and frontier_search library. 
+3. navigation.cpp: The main exploration code used functions from costmap and frontier_search library. 
+
+Implementation explaination: 
 
 
 To run the frontier exploration in simulation(Gazebo):
