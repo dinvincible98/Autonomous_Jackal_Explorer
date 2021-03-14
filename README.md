@@ -1,5 +1,7 @@
 # Autonomous Jackal Explorer
 ### This is an individual winter quarter project at Northwestern University
+![IMG-0430](https://user-images.githubusercontent.com/70287453/111059525-ed1e2c00-845b-11eb-94d7-c0bb2849d0e7.jpg)
+
 ### Project Goal
 
 The goal of the project is to build a mobile robot system equipped with perception, localization, mapping and navigation abilities in both simulation and real world. The robot is capable of exploring an unknown environment autonomously and mapping the world. It can also detect pedestrians and classify different objects with lidar and camera. Based on the changing the environment, the robot should give responses accordingly.
@@ -44,6 +46,7 @@ On Remote PC:
 
 Then, user can use nav goal in Rviz to publish goal point and map the environment.
 ##### Demo
+![jackal_slam](https://user-images.githubusercontent.com/70287453/111059530-f3140d00-845b-11eb-8aa3-7b2310e49384.gif)
 
 #### Note: Remember to source the bash file every time when open a new terminal
 
@@ -69,7 +72,7 @@ To run the frontier exploration in simulation(Gazebo):
         2. roslaunch jackal_slam jackal_explore.launch 
 
 ##### Demo
-
+![sim](https://user-images.githubusercontent.com/70287453/111059533-f4453a00-845b-11eb-9a82-8ed0f2c2b920.gif)
 To run the frontier exploration on real Jackal(Make sure the SLAM node is running first):
 
 On remote PC:
@@ -89,7 +92,7 @@ To run the people tracking, open a new terminal on remote PC:
 ##### Demo
 
 
-#### Part4: Object Detection 
+#### Part 4: Object Detection 
 This part of the project is also my final project for COMP_ENG 395: Connected and Autonomous Vehicles: Challenges and Design which I thorougly evaluated the performance of YOLOv3, YOLOv4 and YOLOv4-tiny and tested on the Jackal. Based on my test result, I found YOLOv4-tiny can reach approximately 30FPS in ROS whereas the other two models only have 3FPS. Even though YOLOv4-tiny has less accuracy compared with the other two models, it is still good enough to classify most objects. Besides, FPS is extreamly important in real-time detection for autonomous vehicle so I decided to use YOLOv4-tiny on Jackal. The full analysis paper can be found [here](https://github.com/dinvincible98/Autonomous_Jackal_Explorer/blob/master/final%20project.pdf). 
 
 To run the object detection, open a new terminal on remote PC:    
