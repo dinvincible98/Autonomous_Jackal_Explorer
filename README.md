@@ -84,7 +84,7 @@ On remote PC:
 ![real](https://user-images.githubusercontent.com/70287453/111059806-e8f30e00-845d-11eb-8db0-c0366c25a32b.gif)
 
 #### Part 3: People Tracking
-For people tracking feature, I used hdl_people tracking package which can detect walking pedestrains by extracting information from the pointcloud data. 
+For people tracking feature, I used hdl_people tracking package which can detect walking pedestrains by extracting information from the pointcloud data then displayed as markerarray in Rviz. 
 
 To run the people tracking, open a new terminal on remote PC:
 
