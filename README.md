@@ -23,6 +23,7 @@ The goal of the project is to build a mobile robot system equipped with percepti
 Please refer to my detailed setup instruction [here](https://github.com/dinvincible98/Jackal_ROS_Noetic_Bringup) and carefully read each command line. To run this project, user need to clone both the bringup repo and this repo.
 
 #### Note: After git clone this repo into ws/src, please change the folder name to jackal_slam, then build the package with catkin_make. 
+
 ### Structure of The Project
 #### Part 1: SLAM
 SLAM(Simultaneous Localization and Mapping) technology allows the robot to map an unknown environment while keeps tracking its own location. I used slam toolbox package to accomplish the task. The basic layout is shown below:
@@ -72,12 +73,12 @@ On remote PC:
         2. roslaunch jackal_slam jackal_explore.launch
 
 #### Part3: People Tracking
-
-
-
+For people tracking feature, I used hdl_people tracking package which can detect walking pedestrains by extracting information from the pointcloud data. 
 
 #### Part4: Object Detection 
+
         
+### Future Work
 
         
 
