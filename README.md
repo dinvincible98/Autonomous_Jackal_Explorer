@@ -92,7 +92,7 @@ To run the people tracking, open a new terminal on remote PC:
 ##### Demo
 ![people](https://user-images.githubusercontent.com/70287453/111059814-eee8ef00-845d-11eb-96fa-cdfd59554b52.gif)
 
-#### Part 4: Object Detection 
+#### Part 4: Real-time Object Detection 
 This part of the project is also my final project for COMP_ENG 395: Connected and Autonomous Vehicles: Challenges and Design which I thorougly evaluated the performance of YOLOv3, YOLOv4 and YOLOv4-tiny and tested on the Jackal. Based on my test result, I found YOLOv4-tiny can reach approximately 30FPS in ROS whereas the other two models only have 3FPS. Even though YOLOv4-tiny has less accuracy compared with the other two models, it is still good enough to classify most objects. Besides, FPS is extreamly important in real-time detection for autonomous vehicle so I decided to use YOLOv4-tiny on Jackal. The full analysis paper can be found [here](https://github.com/dinvincible98/Autonomous_Jackal_Explorer/blob/master/final%20project.pdf). 
 
 Before running the object detection node, user need to change the [path](https://github.com/dinvincible98/Autonomous_Jackal_Explorer/blob/master/src/detection) at line 29-30 to their own YOLO path since the module uses absolute path here. 
