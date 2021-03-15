@@ -7,9 +7,6 @@ The goal of the project is to build a mobile robot system equipped with percepti
 ### Full Demo
 [![Screenshot from 2021-03-14 19-44-28](https://user-images.githubusercontent.com/70287453/111090444-bb5da180-84fd-11eb-84f0-e71821c5488b.png)](https://www.youtube.com/watch?v=shDFnn4GH-g)
 
-View the full demo [here](https://www.youtube.com/watch?v=shDFnn4GH-g)
-
-
 ### Dependencies
 #### Hardware:
 * Clearpath Jackal Robot
