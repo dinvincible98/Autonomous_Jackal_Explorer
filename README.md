@@ -5,7 +5,7 @@
 The goal of the project is to build a mobile robot system equipped with perception, localization, mapping and navigation abilities in both simulation and real world. The robot is capable of exploring an unknown environment autonomously and mapping the world. It can also detect pedestrians and classify different objects with lidar and camera. Based on the changing the environment, the robot should give responses accordingly.
 
 ### Full Demo
-![Screenshot from 2021-03-14 19-43-17](https://user-images.githubusercontent.com/70287453/111090393-936e3e00-84fd-11eb-854d-836db6d4ebaf.png)
+![Screenshot from 2021-03-14 19-44-28](https://user-images.githubusercontent.com/70287453/111090444-bb5da180-84fd-11eb-84f0-e71821c5488b.png)
 
 View the full demo [here](https://www.youtube.com/watch?v=shDFnn4GH-g)
 
